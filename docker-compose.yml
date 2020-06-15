@@ -1,0 +1,28 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "justdoit"
+    volumes:
+       - ./volumes/postgres:/var/lib/postgresql/data
+    ports:
+    - 5432:5432
+  pg_admin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "fjavier5152@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+    volumes:
+      - ./volumes/pgadmin/servers.json:/pgadmin4/servers.json
+    ports:
+      - 8081:80
+
+# docker run -p 80:80 \
+#     -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' \
+#     -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' \
+#     -d dpage/pgadmin4
