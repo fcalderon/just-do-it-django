@@ -9,7 +9,7 @@
 
 ```shell script
 # init the virtual environment 
-
+$ virtualenv env
 $ . .env/bin/activate 
 
 # install dependencies
